@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+
+  InsightHOA Admin Portal
+  <!-- This fills the remaining space of the current row -->
+  <div *ngIf="isLoggedIn">
+    <button  [routerLink]="['/home']" mat-flat-button color="primary" >Tenant Management</button>
+    <button  [routerLink]="['/billing']" mat-flat-button color="primary" >Billing</button>
+    <button  [routerLink]="['/complaints']" mat-flat-button color="primary" >Complaints</button>
+  </div>
+  <span class="example-fill-remaining-space"></span>
+
+
+  <div *ngIf="!isLoggedIn">
+    <button [routerLink]="['/login']" mat-flat-button color="primary"> login </button>
+    <button [routerLink]="['/code']" mat-flat-button color="primary"> register</button>
+  </div>
+  <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="animals">{{email}}</button>
+    <mat-menu #animals="matMenu">
+      <button mat-menu-item (click)="signOut()">Sign out</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
