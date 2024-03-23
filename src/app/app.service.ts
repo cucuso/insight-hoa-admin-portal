@@ -1,5 +1,5 @@
 import { environment } from './../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 
@@ -31,7 +31,13 @@ export class AppService {
     }
 
     getTenants(tenantId:any): Observable<any> {
-        return this.httpClient.get<[any]>(environment.apiUrl + '/users');
+        const token = localStorage.getItem('token');
+
+        const httpHeaders: HttpHeaders = new HttpHeaders({
+            Authorization: 'Bearer '+ token, 
+            Tenant: tenantId
+        });
+        return this.httpClient.get<[any]>(environment.apiUrl + '/users', { headers: httpHeaders });
     }
 
 

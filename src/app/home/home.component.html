@@ -6,10 +6,12 @@
                 <div>
                     <div>
                         <ul>
-                            <li>John Doe <strong>UNIT 3313</strong></li>
-                            <li>Jane Doe <strong>UNIT 3314</strong></li>
-                            <li>Rock Doe <strong>UNIT 3315</strong></li>
-                            <li>Vs Doe <strong>UNIT 3316</strong></li>
+                            <li *ngFor="let tenant of tenants">
+                                <span (click)="openDialog(tenant)">
+                                {{tenant.unit}}
+                            </span>
+                            </li>
+                            
                         </ul>
                     </div>
                 </div>
