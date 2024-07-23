@@ -49,7 +49,7 @@ export class NavComponent implements OnInit {
     );
 
   ngOnInit(): void {
-
+    // this is needed when somone logged out to refresh navbar
     this.appService.currentLoggedInStatus.subscribe(status => {
       this.isLoggedIn = status;
       const token = localStorage.getItem('token');
@@ -60,14 +60,12 @@ export class NavComponent implements OnInit {
     });
 
     const token = localStorage.getItem('token');
+    console.log('sdddd', token);
     if (token) {
       const decodedToken = jwtDecode(token);
       this.email = decodedToken.sub || '';
       this.isLoggedIn = true;
     }
-
-
-
   }
 
 

@@ -30,12 +30,11 @@ export class AppService {
         return this.httpClient.post<[any]>(environment.apiUrl + '/complaints', complaint);
     }
 
-    getTenants(tenantId:any): Observable<any> {
+    getTenants(): Observable<any> {
         const token = localStorage.getItem('token');
 
         const httpHeaders: HttpHeaders = new HttpHeaders({
-            Authorization: 'Bearer '+ token, 
-            Tenant: tenantId
+            Authorization: 'Bearer '+ token,
         });
         return this.httpClient.get<[any]>(environment.apiUrl + '/users', { headers: httpHeaders });
     }

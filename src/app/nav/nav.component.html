@@ -12,7 +12,7 @@
 
   <div *ngIf="!isLoggedIn">
     <button [routerLink]="['/login']" mat-flat-button color="primary"> login </button>
-    <button [routerLink]="['/code']" mat-flat-button color="primary"> register</button>
+    <button [routerLink]="['/register']" mat-flat-button color="primary"> register</button>
   </div>
   <div *ngIf="isLoggedIn">
     <button mat-button [matMenuTriggerFor]="animals">{{email}}</button>

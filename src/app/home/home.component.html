@@ -1,20 +1,14 @@
 <div class="container">
+
     <div>
         <mat-card>
             <mat-card-header>Tenant Management</mat-card-header>
             <mat-card-content>
-                <div>
-                    <div>
-                        <ul>
-                            <li *ngFor="let tenant of tenants">
-                                <span (click)="openDialog(tenant)">
-                                {{tenant.unit}}
-                            </span>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </div>
+                <ag-grid-angular
+                class="ag-theme-quartz"
+                style="height: 500px;"
+                [rowData]="tenants"
+                [columnDefs]="colDefs" />
             </mat-card-content>
         </mat-card>
     </div>

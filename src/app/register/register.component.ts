@@ -21,14 +21,12 @@ export class RegisterComponent {
 
   constructor(private formBuilder: FormBuilder, private appService: AppService, private router: Router) { }
 
-  @Input('code') code: string = '';
-
 
   registerForm = this.formBuilder.group({
     firstName: '',
     lastName: '',
     email: '',
-    unit: '',
+    code: '',
     password:'',
   });
 
@@ -36,7 +34,6 @@ export class RegisterComponent {
 
   onSubmit() {
     const user:any = this.registerForm.value;
-    user['code'] = this.code;
     user['password'] = Md5.hashStr(user.password);
 
     this.appService.createUser(user).subscribe(response => {
